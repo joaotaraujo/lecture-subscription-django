@@ -1,0 +1,48 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<br><br>
+<div class="col-sm-10" style="background-color:rgba(23,162,184,0.45);border-radius:25px;">
+    <br><br><h4><b>Inscrições</b></h4><br><hr/>
+    <div style="height: 380px; overflow-y: scroll;">
+        <table class="table table-info table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Número de inscrição</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Data de nascimento</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <th scope="row">
+                            <a href="/lecture_system/ticket_info_screen/{{ ticket.id }}">{{ ticket.id }}</a>
+                        </th>
+                        <td>{{ ticket.name }}</td>
+                        <td>{{ ticket.cpf }}</td>
+                        <td>{{ ticket.get_date_format }}</td>
+                        {% if ticket.status == 'pendente' %}
+                            <td><b class="text-warning">{{ ticket.status }}</b></td>
+                        {% elif ticket.status == 'aceita' %}
+                            <td><b class="text-success">{{ ticket.status }}</b></td>
+                        {% else %}
+                            <td><b class="text-danger">{{ ticket.status }}</b></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr/><br>
+    <a href="/lecture_system/logout">
+        <button type="button" class="btn btn-primary">Logout</button>
+    </a>
+    <br><br><br>
+</div>
+<br><br>
+
+{% endblock %}

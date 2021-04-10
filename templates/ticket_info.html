@@ -1,0 +1,31 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<br><br><br>
+<div class="col-sm-7" style="background-color:rgba(23,162,184,0.45);border-radius:25px;">
+    <br><br><br>
+    <h2>Informações da inscrição {{ ticket.id }}</h2>
+    <br><hr/><br><br>
+    <h4>Status da inscrição</h4>
+    <br><br>
+
+    <h6 class="text-center">Nome: {{ ticket.name }}</h6>
+    <h6 class="text-center">CPF: {{ ticket.cpf }}</h6>
+    <h6 class="text-center">Data de nascimento: {{ ticket.get_date_format }}</h6>
+    {% if ticket.status == 'pendente' %}
+        <h6 class="text-center text-warning">{{ ticket.status }}</h6>
+    {% elif ticket.status == 'aceita' %}
+        <h6 class="text-center text-success">{{ ticket.status }}</h6>
+    {% else %}
+        <h6 class="text-center text-danger">{{ ticket.status }}</h6>
+    {% endif %}
+    <br><hr/><br>
+    <a href="/lecture_system/login">
+        <button type="button" class="btn btn-secondary">Voltar</button>
+    </a>
+    <br><br><br>
+</div>
+<br><br><br>
+
+{% endblock %}

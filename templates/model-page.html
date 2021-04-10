@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% include "model-header.html" %}
+</head>
+<body>
+    <center>
+        <div style="background-image:url({% static 'images/background.jpg' %});background-size:cover">
+            {% block content %} {% endblock %}
+        </div>
+    </center>
+    {% include "model-footer.html" %}
+</body>
+</html>

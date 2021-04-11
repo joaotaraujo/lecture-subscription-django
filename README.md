@@ -14,7 +14,7 @@ O sistema de inscrição em palestras é composto pela área de acesso público,
 **Senha:** administrador123
 
 
-<h4>Área pública</h4>
+<h3>Área pública</h3>
 
 **Tela de inscrição na palestra:** É a tela inicial do sistema, onde é permitido ao usuário se inscrever em uma palestra.
 
@@ -47,7 +47,7 @@ pelo motivo informado pelo responsável que realizou a análise da inscrição.
 
 
 
-<h4>Área de análise de inscrições</h4>
+<h3>Área de análise de inscrições</h3>
 
 **Tela de listagem de todas as inscrições:** Essa página deve ser exibida assim que o usuário efetuar logon no sistema. O usuário para acesso deve ser “administrador”, e a senha deve ser “administrador123”. Nesta tela são exibidas todas as inscrições realizadas pelo público. Deve ser exibida uma listagem das inscrições realizadas, onde são exibidos todos os dados (nome, CPF e data de nascimento). Ao se clicar em uma inscrição, o usuário é levado até outra tela para análise da inscrição.
 

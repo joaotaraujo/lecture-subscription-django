@@ -20,7 +20,7 @@ https://localhost:8000
 
 
 <h3>Área pública</h3>
----------------------
+----------------------------------
 
 **Tela de inscrição na palestra:** É a tela inicial do sistema, onde é permitido ao usuário se inscrever em uma palestra.
 
@@ -34,6 +34,7 @@ inscrição para consulta posterior;
 5. O número deve ser gerado automaticamente pelo sistema;
 6. A inscrição pode ter 3 status: pendente, aceita, não aceita;
 7. A inscrição recebe inicialmente o status “pendente”.
+
 
 **Tela de consulta de inscrição:** Nesta tela é permitido ao usuário consultar se sua inscrição foi aceita, bastando que seja informado o número recebido no ato do envio da inscrição.
 
@@ -54,9 +55,9 @@ pelo motivo informado pelo responsável que realizou a análise da inscrição.
 
 
 <h3>Área de análise de inscrições</h3>
---------------------------------------
+---------------------------------------------------
 
-**Tela de listagem de todas as inscrições:** Essa página deve ser exibida assim que o usuário efetuar logon no sistema. O usuário para acesso deve ser “administrador”, e a senha deve ser “administrador123”. Nesta tela são exibidas todas as inscrições realizadas pelo público. Deve ser exibida uma listagem das inscrições realizadas, onde são exibidos todos os dados (nome, CPF e data de nascimento). Ao se clicar em uma inscrição, o usuário é levado até outra tela para análise da inscrição.
+<h4>**Tela de listagem de todas as inscrições:**</h4> Essa página deve ser exibida assim que o usuário efetuar logon no sistema. O usuário para acesso deve ser “administrador”, e a senha deve ser “administrador123”. Nesta tela são exibidas todas as inscrições realizadas pelo público. Deve ser exibida uma listagem das inscrições realizadas, onde são exibidos todos os dados (nome, CPF e data de nascimento). Ao se clicar em uma inscrição, o usuário é levado até outra tela para análise da inscrição.
 
 **Requisitos**
 
@@ -66,6 +67,7 @@ pelo motivo informado pelo responsável que realizou a análise da inscrição.
 CPF e data de nascimento), nesta mesma ordem;
 4. A última coluna deve informar se a inscrição foi aceita;
 5. O número da inscrição deve ser um link, que leva até a página de análise de inscrições.
+
 
 **Tela de análise da inscrição:** Nessa tela devem ser exibidos todos os dados informados no cadastro, deve permitir fazer download dos arquivos anexados na inscrição, e informar se a inscrição foi aceita, e o motivo em caso de a inscrição não ter sido aceita.
 

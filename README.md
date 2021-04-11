@@ -16,6 +16,9 @@ https://localhost:8000
 * **Usuário:** administrador
 * **Senha:** administrador123
 
+# Screenshots
+
+incomming...
 
 # <h3>Área pública</h3>
 
@@ -43,7 +46,7 @@ https://localhost:8000
 
 
 
-<h3>Área de análise de inscrições</h3>
+# <h3>Área de análise de inscrições</h3>
 ---------------------------------------------------
 
 **<h4>Tela de listagem de todas as inscrições:</h4>** Essa página deve ser exibida assim que o usuário efetuar logon no sistema. O usuário para acesso deve ser “administrador”, e a senha deve ser “administrador123”. Nesta tela são exibidas todas as inscrições realizadas pelo público. Deve ser exibida uma listagem das inscrições realizadas, onde são exibidos todos os dados (nome, CPF e data de nascimento). Ao se clicar em uma inscrição, o usuário é levado até outra tela para análise da inscrição.

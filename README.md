@@ -17,8 +17,7 @@ https://localhost:8000
 * **Senha:** administrador123
 
 
-<h3>Área pública</h3>
-----------------------------------
+# <h3>Área pública</h3>
 
 **Tela de inscrição na palestra:** É a tela inicial do sistema, onde é permitido ao usuário se inscrever em uma palestra.
 

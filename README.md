@@ -32,7 +32,7 @@ https://localhost:8000
 6. A inscrição pode ter 3 status: pendente, aceita, não aceita;
 7. A inscrição recebe inicialmente o status “pendente”.
 
-
+<p>
 **Tela de consulta de inscrição:** Nesta tela é permitido ao usuário consultar se sua inscrição foi aceita, bastando que seja informado o número recebido no ato do envio da inscrição.
 
 **Requisitos**

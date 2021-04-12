@@ -2,30 +2,92 @@
 
 {% block content %}
 
-<br><br><br>
-<div class="col-sm-7" style="background-color:rgba(23,162,184,0.45);border-radius:25px;">
-    <br><br><br>
-    <h2>Informações da inscrição {{ ticket.id }}</h2>
-    <br><hr/><br><br>
-    <h4>Status da inscrição</h4>
-    <br><br>
+<script type="text/javascript">
+    function show_reason() {
+        var status = document.getElementById("select_status").value;
+        var reason_div = document.getElementById("reason_div");
+        if (status == "nao aceita") {
+            reason_div.style.display = "block";
+        } else {
+            reason_div.style.display = "none";
+        }
+    }
+</script>
 
-    <h6 class="text-center">Nome: {{ ticket.name }}</h6>
-    <h6 class="text-center">CPF: {{ ticket.cpf }}</h6>
-    <h6 class="text-center">Data de nascimento: {{ ticket.get_date_format }}</h6>
-    {% if ticket.status == 'pendente' %}
-        <h6 class="text-center text-warning">{{ ticket.status }}</h6>
-    {% elif ticket.status == 'aceita' %}
-        <h6 class="text-center text-success">{{ ticket.status }}</h6>
-    {% else %}
-        <h6 class="text-center text-danger">{{ ticket.status }}</h6>
-    {% endif %}
-    <br><hr/><br>
-    <a href="/lecture_system/login">
-        <button type="button" class="btn btn-secondary">Voltar</button>
-    </a>
-    <br><br><br>
+<br><br><br>
+<div class="col-sm-7 content-customized">
+    <br><br><h2>Informações da inscrição {{ ticket.id }}</h2><br><hr/>
+    <div class="col-sm-11 content-customized">
+        <br><br><h4><b>Status da inscrição</b></h4><br><br>
+        <form action="submit" method="POST"> {% csrf_token %}
+            <div class="form-group row">
+                <div class="col-sm-6 text-right"><h6><b>Nome: </b></h6></div>
+                <div class="col-sm-6 text-left"><h6>{{ ticket.name }}</h6></div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 text-right"><h6><b>CPF: </b></h6></div>
+                <div class="col-sm-6 text-left"><h6>{{ ticket.cpf }}</h6></div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 text-right"><h6><b>Data de nascimento: </b></h6></div>
+                <div class="col-sm-6 text-left"><h6>{{ ticket.get_date_format }}</h6></div>
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <b><a href="{{ ticket.cpf_pdf.url }}" class="text-light">
+                    <h6>Visualizar CPF</h6>
+                </a></b>
+                <b><a href="{{ ticket.rg_pdf.url }}" class="text-light">
+                    <h6>Visualizar RG</h6>
+                </a></b>
+                <b><a href="{{ ticket.contract_pdf.url }}" class="text-light">
+                    <h6>Visualizar Contrato de trabalho</h6>
+                </a></b><br>
+            </div>
+            <br><br>
+            <div class="form-group row">
+                <div class="col-sm-6 text-right"><h6><b>Status: </b></h6></div>
+                <div class="col-sm-6 text-left">
+                    <h6>
+                        <select class="form-select" id="select_status" name="select_status"
+                                onchange="show_reason()">
+                            <option value="aceita">Aceita</option>
+                            <option value="nao aceita">Não aceita</option>
+                            <option value="pendente">Pendente</option>
+                        </select>
+                    </h6>
+                </div>
+            </div>
+            <br>
+            <div class="form-group" id="reason_div" style="display: none;">
+                <div class="form-group col-sm-10">
+                    <h6><label for="cancel_reason"><b>Motivo:</b></label></h6>
+                    <textarea class="form-control" id="cancel_reason"
+                              name="cancel_reason" rows="5">{{ ticket.cancel_reason }}</textarea>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+        </form>
+        <br><hr/><br>
+        <a href="/lecture_system/login">
+            <button type="button" class="btn btn-secondary">Voltar</button>
+        </a>
+        <br><br><br>
+    </div>
+    <br><br>
 </div>
 <br><br><br>
+
+{% if ticket.status == 'aceita' %}
+    <script>document.getElementById("select_status").value = "aceita";</script>
+{% elif ticket.status == 'nao aceita' %}
+    <script>
+        document.getElementById("select_status").value = "nao aceita";
+        document.getElementById("reason_div").style.display = "block";
+    </script>
+{% else %}
+    <script>document.getElementById("select_status").value = "pendente";</script>
+{% endif %}
 
 {% endblock %}

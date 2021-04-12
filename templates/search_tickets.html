@@ -3,14 +3,18 @@
 {% block content %}
 
 <br><br><br>
-<div class="col-sm-7" style="background-color:rgba(23,162,184,0.45);border-radius:25px;">
+<div class="col-sm-7 content-customized">
     <br><br><br>
     <h2>Consultar inscrição</h2>
     <br><br><br>
     <form action="submit" method="POST"> {% csrf_token %}
         <div class="form-group row">
             <div class="col-sm-4">
-                <h5><label class="float-right" for="ticket_id">Número de inscrição:</label></h5>
+                <h5>
+                    <label class="float-right" for="ticket_id">
+                        Número de inscrição:
+                    </label>
+                </h5>
             </div>
             <div class="col-sm-5">
                 <input type="number" class="form-control" id="ticket_id" name="ticket_id"
@@ -28,14 +32,24 @@
         <h4>Status da inscrição</h4>
         <br><br>
         {% if ticket.status == 'pendente' %}
-            <h6 class="text-center text-danger"><i>Caro <b>{{ ticket.name }}</b>
-                , sua inscrição ainda está pendente de análise</i></h6>
+            <h6 class="text-center text-warning">
+                <i>
+                    Caro <b>{{ ticket.name }}</b>, sua inscrição ainda está pendente de análise
+                </i>
+            </h6>
         {% elif ticket.status == 'aceita' %}
-            <h6 class="text-center text-success"><i>Caro <b>{{ ticket.name }}</b>
-                , sua inscrição foi aceita</i></h6>
+            <h6 class="text-center text-success">
+                <i>
+                    Caro <b>{{ ticket.name }}</b>, sua inscrição foi aceita
+                </i>
+            </h6>
         {% else %}
-            <h6 class="text-center text-danger"><i>Caro <b>{{ ticket.name }}</b>
-                , sua inscrição não foi aceita pelo motivo: {{ ticket.cancel_reason }}</i></h6>
+            <h6 class="text-center text-danger">
+                <i>
+                    Caro <b>{{ ticket.name }}</b>, sua inscrição não foi aceita
+                    pelo motivo: <b>{{ ticket.cancel_reason }}</b>
+                </i>
+            </h6>
         {% endif %}
         <br><hr/><br>
     {% endfor %}
@@ -46,7 +60,7 @@
         </h5>
         <br><hr/>
     {% endfor %}
-    <br><br>
+    <br>
     <a href="/">
         <button type="button" class="btn btn-secondary">Voltar</button>
     </a>

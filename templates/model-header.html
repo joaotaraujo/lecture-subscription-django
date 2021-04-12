@@ -1,46 +1,73 @@
 <meta charset="UTF-8">
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="shortcut icon" href="{% static 'images/python-logo.png' %}" />
+<link rel="shortcut icon" href="{% static 'images/python-logo.png' %}"/>
 <title>Inscrições em palestras</title>
 
 <style>
-    * {
-      font-family:monospace;
-    }
+* {
+    font-family: monospace;
+}
+.content-customized{
+    background-color: rgba(23,162,184,0.65);
+    border-radius: 25px;
+}
 </style>
 
-<nav class="navbar navbar-expand-lg bg-info">
-    <a href="/lecture_system"><img src="{% static 'images/python-logo.png' %}" width="50" height="40"></a>
+<nav class="navbar navbar-expand bg-info py-0">
+    <a href="/lecture_system">
+        <img src="{% static 'images/python-logo.png' %}" width="50" height="40">
+    </a>
     <div class="navbar-brand">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto pt-3">
             <li class="nav-item ml-3">
-               <h6><a class="nav-link text-light" href="/lecture_system/">Home</a></h6>
+               <h6>
+                   <a class="nav-link text-light" href="/lecture_system/">
+                       Home
+                   </a>
+               </h6>
             </li>
             <li class="nav-item ml-3">
-                <h6><a class="nav-link text-light" href="/lecture_system/search_screen">Consultar inscrição</a></h6>
+                <h6>
+                    <a class="nav-link text-light" href="/lecture_system/search_screen">
+                        Consultar inscrição
+                    </a>
+                </h6>
             </li>
             <li class="nav-item ml-3">
-                <h6><a class="nav-link text-light" href="/lecture_system/login">Área administrativa</a></h6>
+                <h6>
+                    <a class="nav-link text-light" href="/lecture_system/login">
+                        Análise de inscrições
+                    </a>
+                </h6>
             </li>
         </ul>
     </div>
-
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto pt-3">
             {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <h6><a class="nav-link text-light" href="/lecture_system/login">Logado como: <b class="text-dark">{{ request.user.username }}</b></a></h6>
-                </li>
-                <li class="nav-item ml-4">
-                    <h6><a class="nav-link text-light" href="/lecture_system/logout">Logout</a></h6>
+                    <h6>
+                        <a class="nav-link text-light" href="/lecture_system/login">
+                            Logado como:
+                            <b class="text-dark">{{ request.user.username }}</b>
+                        </a>
+                    </h6>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <h6><a class="nav-link text-light" href="/lecture_system/login">Logar</a></h6>
+                    <h6>
+                        <a class="nav-link text-light" href="/lecture_system/login">
+                            Logar
+                        </a>
+                    </h6>
                 </li>
             {% endif %}
         </ul>
     </div>
 </nav>
+{% if request.user.is_authenticated %}
+    <a class="nav-link float-right" href="/lecture_system/logout">
+        <h6><b>Logout</b></h6>
+    </a>
+{% endif %}

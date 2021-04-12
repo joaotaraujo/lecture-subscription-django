@@ -1,13 +1,9 @@
-from django.contrib.auth.models import User
 from django.db import models
-from django import forms
-
-# Create your models here.
 
 
 class LectureTicket(models.Model):
     name = models.TextField(max_length=40)
-    cpf = models.TextField(max_length=11)
+    cpf = models.TextField(max_length=14)
     born_date = models.DateTimeField()
     rg_pdf = models.FileField(upload_to='documents/')
     cpf_pdf = models.FileField(upload_to='documents/')

@@ -16,14 +16,13 @@ def search_screen(request):
 
 def adm_screen(request):
     if request.user.is_authenticated:
-        return render(request, 'show_tickets.html', get_all_tickets(request))
+        return render(request, 'show_tickets.html', get_all_tickets())
     return render(request, 'login.html')
 
 
 @login_required(login_url='/lecture_system/login/')
 def ticket_info_screen(request, ticket_id):
-    tickets = {}
-    tickets['ticket'] = LectureTicket.objects.get(id=ticket_id)
+    tickets = {'ticket': LectureTicket.objects.get(id=ticket_id)}
     return render(request, 'ticket_info.html', tickets)
 
 
@@ -39,7 +38,7 @@ def submit_login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, 'show_tickets.html', get_all_tickets(request))
+            return render(request, 'show_tickets.html', get_all_tickets())
         else:
             messages.error(request, "Usuario ou senha inválidos!")
     return redirect('/lecture_system/login')
@@ -51,9 +50,15 @@ def submit_ticket(request):
         cpf = request.POST.get('cpf')
         born_date = request.POST.get('born_date')
 
-        if name == '' or cpf == '' or born_date == '':
+        if not name or not cpf or not born_date:
             messages.error(request, "Erro: Preencha todos os campos!")
             return redirect('/')
+        elif len(name) > 40:
+            messages.error(request, "Erro: Seu nome deve ter no máximo 40 caracteres!")
+            return redirect('/')
+        # elif not re.match(r'\d{3}\.\d{3}\.\d{3}-\d{2}', cpf):
+        #    messages.error(request, "Erro: formato de CPF inválido!")
+        #    return redirect('/')
 
         try:
             rg_pdf = request.FILES['rg_pdf']
@@ -68,7 +73,7 @@ def submit_ticket(request):
             return redirect('/')
 
         if LectureTicket.objects.filter(name=name):
-            messages.error(request, "Erro: Esta pessoa já possui um ticket cadastrado!")
+            messages.error(request, "Erro: Esta pessoa já está inscrita!")
             return redirect('/')
 
         LectureTicket.objects.create(name=name,
@@ -101,6 +106,19 @@ def search_ticket(request):
         return render(request, 'search_tickets.html')
 
 
-def get_all_tickets(request):
+def get_all_tickets():
     ticket = LectureTicket.objects.all()
     return {'tickets': ticket}
+
+
+def edit_ticket(request, ticket_id):
+    if request.POST:
+        status = request.POST.get('select_status')
+        if status == 'nao aceita':
+            cancel_reason = request.POST.get('cancel_reason')
+        else:
+            cancel_reason = ''
+        LectureTicket.objects.filter(id=ticket_id).update(status=status, cancel_reason=cancel_reason)
+
+    messages.success(request, "{}{}{}".format("Inscrição ", ticket_id, " atualizada com sucesso!"))
+    return redirect('/lecture_system/login')

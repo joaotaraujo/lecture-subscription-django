@@ -3,9 +3,10 @@
 {% block content %}
 
 <br><br><br>
-<div class="col-sm-4 margin" style="background-color:rgba(23,162,184,0.45);border-radius:25px;">
-    <br><br><h1>Login</h1><br><br>
-    <form action="submit" method="POST">{% csrf_token %}
+<div class="col-sm-4 content-customized">
+    <br><br>
+    <h1>Login</h1><br><br>
+    <form action="submit" method="POST"> {% csrf_token %}
         <div class="form-group row col-sm-10">
             <div class="col-sm-3">
                 <h5><label class="float-right" for="username">Usuário:</label></h5>
@@ -22,18 +23,19 @@
                 <input type="password" class="form-control" id="password" name="password"
                        placeholder="Entre com a sua senha">
             </div>
-        </div><br><br>
+        </div>
+        <br><br>
         <button class="btn btn-primary" type="submit">Entrar</button>
         <a href="/">
             <button type="button" class="btn btn-secondary">Voltar</button>
         </a>
     </form>
-
+    <br><br><br>
     {% for message in messages %}
-        <br><br>
         <div align="center">
             <h5 class="text-danger">Erro: {{ message }}</h5>
         </div>
+        <br><br>
     {% endfor %}
 </div>
 <br><br><br>

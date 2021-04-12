@@ -3,8 +3,13 @@
 {% block content %}
 
 <br><br>
-<div class="col-sm-10" style="background-color:rgba(23,162,184,0.45);border-radius:25px;">
-    <br><br><h4><b>Inscrições</b></h4><br><hr/>
+<div class="col-sm-10 content-customized">
+    <br><br><h4><b>Inscrições</b></h4><br><hr/><br>
+    {% for message in messages %}
+        <div align="center">
+            <h5 class="text-success">{{ message }}</h5><br><hr/>
+        </div>
+    {% endfor %}
     <div style="height: 380px; overflow-y: scroll;">
         <table class="table table-info table-striped table-bordered">
             <thead>
@@ -20,7 +25,9 @@
                 {% for ticket in tickets %}
                     <tr>
                         <th scope="row">
-                            <a href="/lecture_system/ticket_info_screen/{{ ticket.id }}">{{ ticket.id }}</a>
+                            <a href="/lecture_system/ticket_info_screen/{{ ticket.id }}">
+                                {{ ticket.id }}
+                            </a>
                         </th>
                         <td>{{ ticket.name }}</td>
                         <td>{{ ticket.cpf }}</td>

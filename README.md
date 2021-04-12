@@ -18,7 +18,19 @@ https://localhost:8000
 
 # Screenshots
 
-incomming...
+<b>Tela de inscrição</b>
+
+![Subscription_screen](/screenshots/subscription_screen.png)
+
+
+
+<b>Tela com todas as incrições realizadas</b>
+
+![All_subscriptions_screen](/screenshots/all_subscriptions_screen.png)
+
+
+
+
 
 # <h3>Área pública</h3>
 

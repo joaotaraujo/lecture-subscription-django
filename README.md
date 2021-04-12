@@ -12,7 +12,7 @@ python manage.py runserver
 https://localhost:8000
 ```
 
-**Conta de administrador**
+**Conta de administrador:**
 * **Usuário:** administrador
 * **Senha:** administrador123
 
